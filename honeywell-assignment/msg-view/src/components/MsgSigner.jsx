@@ -33,7 +33,7 @@ const MessageSigner = () => {
   };
 
   return (
-    <div style={{ marginTop: 20 }}>
+    <div className="message-signer">
       <textarea
         rows="4"
         cols="60"
@@ -42,26 +42,27 @@ const MessageSigner = () => {
         onChange={(e) => setMessage(e.target.value)}
       />
 
-      <div style={{ margin: "10px 0" }}>
-        <button onClick={handleSign} style={{ marginRight: 10 }}>
-          Submit & Sign
-        </button>
-        <button onClick={handleVerify} disabled={!signature}>
-          Verify
+      <div>
+        <button onClick={handleSign} style={{marginBottom: '20px' }}>
+          Sign
         </button>
       </div>
 
       {signature && (
-        <div style={{ marginTop: 10 }}>
+        <div>
           <strong>Signature (Base64):</strong>
-          <pre style={{ backgroundColor: "#f0f0f0", padding: "10px" }}>
+          <p style={{ backgroundColor: "#f0f0f0", padding: "10px" }}>
             {signature}
-          </pre>
+          </p>
+          <button onClick={handleVerify} style={{marginBottom: '20px' }} disabled={!signature}>
+            Verify
+          </button>
         </div>
+
       )}
 
       {status && (
-        <div style={{ marginTop: 10 }}>
+        <div>
           <strong>Verification Status:</strong>
           <p>{status}</p>
         </div>
